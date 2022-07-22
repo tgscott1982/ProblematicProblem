@@ -6,18 +6,25 @@ namespace ProblematicProblem  //namespace
 {
   class Program
   { //class and program swapped
+            
+        static Random rng = new Random(); // add new random
+        
+        static bool cont = true;
+        
         static void Main(string[] args)
         {
-            Random rng = new Random(); // add new random
-        
-            bool cont = true; //remove static
-        
             List<string> activities = new List<string>() { "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" }; //semicolon and remove static
         
     
             Console.Write("Hello, welcome to the random activity generator! \n\nWould you like to generate a random activity? yes/no: "); //semicolon
             cont =Console.ReadLine().ToLower() == "yes" ? true : false; //no redeclare cont - adjust for user input yes/no
             
+            if (cont == false) //will exit if no versus continuing to name and age
+            {
+                return;
+            }
+
+
             Console.WriteLine();
             
             Console.Write("We are going to need your information first! What is your name? ");
@@ -35,7 +42,7 @@ namespace ProblematicProblem  //namespace
             Console.Write("Would you like to see the current list of activities? Sure/No thanks: ");
             
             bool seeList = Console.ReadLine().ToLower() == "sure" ? true : false; //adjust for user input
-            
+
             if (seeList)
             {   
                 Console.WriteLine();
@@ -115,8 +122,22 @@ namespace ProblematicProblem  //namespace
                 Console.Write($"\nAh got it! {userName}, your random activity is: {randomActivity}! Is this ok or do you want to grab another activity? Keep/Redo: ");  //semicolon and swapped username with randomactivity
                 
                 Console.WriteLine(); //dot between cww
-                
-                cont = Console.ReadLine().ToLower() == "keep" ? true : false; //adjust for user input
+
+                cont = Console.ReadLine().ToLower() == "keep" ? false : true;
+
+                if (cont == true) //adjust for user input AND to provide a segue into new activity OR to wish user a good day if keeping
+                {
+                    activities.Remove(randomActivity); //remove activity from list if user asks to redo
+                    Console.WriteLine();
+                    Console.WriteLine("Okay, one moment please. . . . . .\n");
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Thank you for visiting us today! Enjoy your activity!");
+                }
+
+               
             }
         
         }              //MULTIPLE CURLY BRACE ISSUES!!! OMG!!!
