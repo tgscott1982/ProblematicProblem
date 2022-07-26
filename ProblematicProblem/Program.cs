@@ -107,7 +107,7 @@ namespace ProblematicProblem  //namespace
                 
                 string randomActivity = activities[randomNumber]; //semicolon
                 
-                if (userAge > 21 && randomActivity == "Wine Tasting")
+                if (userAge < 21 && randomActivity == "Wine Tasting")
                 {
                     Console.WriteLine($"Oh no! Looks like you are too young to do {randomActivity}");
                     
